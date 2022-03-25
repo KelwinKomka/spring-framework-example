@@ -23,7 +23,7 @@ class AuthenticationControllerTest {
 
     @Test
     void shouldReturnBadRequest_WhenInvalidFormData() throws Exception {
-        URI uri = new URI("/auth");
+        URI uri = new URI("/api/auth");
         String json = "{\"login\":\"admin\",\"password\":\"123123\"}";
 
         mockMvc.perform(MockMvcRequestBuilders

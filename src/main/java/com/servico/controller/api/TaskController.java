@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/task")
+@RequestMapping("/api/task")
 public class TaskController {
 
     private final TaskService taskService;
@@ -49,7 +49,7 @@ public class TaskController {
     public ResponseEntity<TaskDTO> createTask(@RequestBody @Valid TaskForm task, UriComponentsBuilder uriBuilder) {
         TaskDTO newTask = taskService.saveTask(task);
         if (newTask != null) {
-            URI uri = uriBuilder.path("/task/{id}").buildAndExpand(newTask.getId()).toUri();
+            URI uri = uriBuilder.path("/api/task/{id}").buildAndExpand(newTask.getId()).toUri();
             return ResponseEntity.created(uri).body(newTask);
         } else
             throw new TaskNotFoundException("Tarefa não criada!");
